@@ -11,9 +11,7 @@
     "build": "tsc",
 
     "docker:dev": "docker compose -f ./docker-compose.dev.yml up ",
-    "copy-to-docker": "docker compose -f ./docker-compose.dev.yml cp ./src/ code_runner-service:/usr/src/app",
-    "start:docker": "docker compose -f ./docker-compose.dev.yml exec code_runner-service npm run start:ts ",
-    "dev:docker": "npm run copy-to-docker && npm run start:docker",
+    "dev:docker": "docker compose -f ./docker-compose.dev.yml cp ./src/ code_runner-service:/usr/src/app && docker compose -f ./docker-compose.dev.yml exec code_runner-service npm run start:ts ",
 
     "push:docker" : "docker build -t villsource/coderunnerservice . && docker push villsource/coderunnerservice"
   },
