@@ -11,6 +11,7 @@ services:
       CODE_REPO: /sourcecodes
       SLAVE_USER_NAME: runner
       SLAVE_HOST_PYTHON: python-slave
+      SLAVE_HOST_JAVA: java-slave
     volumes:
       - ./CompilerContainer/Keys:/keys
       - ./CompilerContainer/SourceCode:/sourcecodes
@@ -20,6 +21,17 @@ services:
     build:
       context: ./CompilerContainer
       dockerfile: Python.Dockerfile
+    environment:
+      USER_NAME: runner
+    volumes:
+      - ./CompilerContainer/Keys:/config/.ssh
+      - ./CompilerContainer/SourceCode:/config/sourcecode
+
+  java-slave:
+    image: java-slave
+    build:
+      context: ./CompilerContainer
+      dockerfile: Java.Dockerfile
     environment:
       USER_NAME: runner
     volumes:

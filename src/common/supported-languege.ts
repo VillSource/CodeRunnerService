@@ -1,1 +1,3 @@
-export type SUPPORTED_LANGUAGES = 'c' | 'java' | 'python3' | 'nodejs' ;
+export type SUPPORTED_LANGUAGES =
+  | 'java17'
+  | 'python3'
