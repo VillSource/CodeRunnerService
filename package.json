@@ -10,7 +10,7 @@
     "start": "node dist/app.js",
     "build": "tsc",
 
-    "docker:dev": "docker compose -f ./docker-compose.dev.yml up ",
+    "docker:dev": "docker compose -f ./docker-compose.dev.yml up -d",
     "dev:docker": "docker compose -f ./docker-compose.dev.yml cp ./src/ code_runner-service:/usr/src/app && docker compose -f ./docker-compose.dev.yml exec code_runner-service npm run start:ts ",
 
     "push:docker" : "docker build -t villsource/coderunnerservice . && docker push villsource/coderunnerservice"
