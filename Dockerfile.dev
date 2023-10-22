@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 
 # setup key and ssh
 RUN apk upgrade --update-cache --available && \
-    apk add openssh-client && \
+    apk add openssh-client python3 make g++ && \
     rm -rf /var/cache/apk/*
 
 RUN mkdir /keys && \
@@ -17,6 +17,7 @@ RUN echo 'IdentityFile /keys/id_rsa ' >> /etc/ssh/ssh_config
 
 COPY ./package.json ./package.json
 RUN npm install
+RUN npm install tsc ts-node
 
 ENV NODE_ENV=production
 

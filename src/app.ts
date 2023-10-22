@@ -3,6 +3,7 @@ import { ErrorHandeler } from './error-handelers/error-handeler';
 import { createServer } from 'http';
 import Websocket from './hubs/socket';
 import { CodeRunners } from './hubs/run';
+import { SocketLayer } from './hubs/socket-layer';
 
 console.clear();
 
@@ -29,7 +30,8 @@ const httpServer = createServer(app);
 // create websocket
 const io = Websocket.getInstance(httpServer);
 io.initializeHandlers([
-  {path:"/", handler: new CodeRunners()}
+  {path:"/", handler: new CodeRunners()},
+  {path:"/tmp", handler: new SocketLayer()}
 ]);
 
 // start server
